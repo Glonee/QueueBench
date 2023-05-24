@@ -1,7 +1,6 @@
 package queue
 
 type RingBuffer[T any] struct {
-	zeroVal    T
 	ring       []T
 	head, tail int
 	full       bool
@@ -53,14 +52,15 @@ func (r *RingBuffer[T]) Pop() T {
 	return t
 }
 
-func (r *RingBuffer[T]) PopCheckAndRwrite() (t T, ok bool) {
+func (r *RingBuffer[T]) PopWithCheckAndRwrite() (t T, ok bool) {
 	if r.Len() == 0 {
 		return
 	}
 	ok = true
 	r.full = false
 	t = r.ring[r.head]
-	r.ring[r.head] = r.zeroVal
+	var zeroVal T
+	r.ring[r.head] = zeroVal
 	r.head++
 	if r.head == len(r.ring) {
 		r.head = 0
