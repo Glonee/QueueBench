@@ -1,4 +1,5 @@
-# Benchmark test result of queue implementions in go. Recent test result can be found in GitHub Actions.
+# Benchmark test result of queue implementions in go
+Recent test result can be found in GitHub Actions.
 ```
 BenchmarkTwoStagesQueue                	1000000000	         4.432 ns/op	       0 B/op	       0 allocs/op
 BenchmarkTwoStagesQueueBuffered        	1000000000	         2.636 ns/op	       0 B/op	       0 allocs/op
