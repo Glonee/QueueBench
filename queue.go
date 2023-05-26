@@ -18,8 +18,7 @@ func (q *Queue[T]) Pop() T {
 		q.head, q.tail, q.headPos = q.tail, q.head[:0], 0
 	}
 	t := q.head[q.headPos]
-	var zeroVal T
-	q.head[q.headPos] = zeroVal
+	q.head[q.headPos] = *new(T)
 	q.headPos++
 	return t
 }

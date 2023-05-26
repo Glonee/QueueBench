@@ -51,19 +51,16 @@ func (r *RingBuffer[T]) Pop() T {
 	}
 	return t
 }
-
-func (r *RingBuffer[T]) PopWithCheckAndRwrite() (t T, ok bool) {
-	if r.Len() == 0 {
-		return
+func (r *RingBuffer[T]) PopWithCheckAndRwrite() T {
+	if !r.full && r.head == r.tail {
+		panic("pop from an empty queue")
 	}
-	ok = true
 	r.full = false
-	t = r.ring[r.head]
-	var zeroVal T
-	r.ring[r.head] = zeroVal
+	t := r.ring[r.head]
+	r.ring[r.head] = *new(T)
 	r.head++
 	if r.head == len(r.ring) {
 		r.head = 0
 	}
-	return
+	return t
 }
