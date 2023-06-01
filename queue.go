@@ -14,6 +14,9 @@ func (q *Queue[T]) Push(t T) {
 }
 
 func (q *Queue[T]) Pop() T {
+	if q.Len() == 0 {
+		panic("pop from an empty queue")
+	}
 	if q.headPos >= len(q.head) {
 		q.head, q.tail, q.headPos = q.tail, q.head[:0], 0
 	}
