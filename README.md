@@ -10,6 +10,3 @@ BenchmarkRingBufferWithCheckBuffered   	1000000000	         6.872 ns/op	       0
 BenchmarkSlice                         	1000000000	        24.47 ns/op	       8 B/op	       1 allocs/op
 BenchmarkSliceBuffered                 	1000000000	         7.242 ns/op	      16 B/op	       0 allocs/op
 ```
-$$
-p_n=1+\sum^{2^n}_{m=1}\left\lfloor\left(\frac{n}{1+\sum^m_{j=1}\left\lfloor\cos^2\frac{((j-1)!+1)\pi}{j}\right \rfloor}\right)^{\frac{1}{n}}\right\rfloor
-$$
